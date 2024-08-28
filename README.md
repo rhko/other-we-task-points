@@ -1,7 +1,7 @@
 #Point 2 (Refactoring)
-  * Refactor index action
+  * Refactor index action: 
         pass posts directly on view instead of variable creation and use pagination for better performance
-  * Refactor store action
+  * Refactor store action: 
         create FormRequest for seperate validation logic,
         And use mass assignment to create post with validated data if validation passes,
         And flash message to notify that create proccess success
