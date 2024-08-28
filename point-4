@@ -1,0 +1,23 @@
+-- get all posts that have max number of commments
+SET @max_comments = (
+    SELECT COUNT(*) 
+    FROM comments 
+    GROUP BY post_id 
+    ORDER BY COUNT(*) DESC 
+    LIMIT 1
+);
+
+SELECT p.*, COUNT(c.id) AS comments_count
+FROM posts p
+LEFT JOIN comments c ON p.id = c.post_id
+GROUP BY p.id
+HAVING comments_count = @max_comments;
+
+
+-- get only one post
+SELECT p.*, COUNT(c.id) AS comments_count
+FROM posts p
+LEFT JOIN comments c ON p.id = c.post_id
+GROUP BY p.id
+ORDER BY comments_count DESC
+LIMIT 1;
